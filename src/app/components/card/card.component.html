@@ -1,0 +1,35 @@
+<nav class="red" aria-label="breadcrumb" *ngIf="alarm">
+   <h4>Реєстрація вдала. Заповність наступні данні по картці.</h4>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="images">
+           <div *ngIf="imagePath">
+                <img [src]="imagePath">
+           </div>
+      </div>
+      <div class="scene">
+       <div class="image" >
+        <div  class="clk ">
+          <img src='../../../assets/credit-card-1211408_640.png' [@card1]="cardstate">
+        </div>
+         <div class="clk1 ">
+          <img src="../../../assets/bank-2029480_640.png" [@card]="cardstate">
+         </div>
+       </div>
+      </div>
+
+    </div>
+    <div class="col-12">
+      <div>
+        <router-outlet></router-outlet>
+      </div>
+      <div class=" justify-content-between">
+        <input class="btn btn-primary" [disabled]="!formvalid" (click)="ahead()" type="button" value="Продовжити оформлення"><br>
+        <input class="btn btn-warning" (click)="back()" type="button" value="Повернутись назад">
+       </div>
+    </div>
+  </div>
+
+</div>

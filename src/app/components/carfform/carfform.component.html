@@ -1,0 +1,43 @@
+<div class="cardform">
+  <form [formGroup]="form">
+   <fieldset>
+     <legend>Вести реквізити картки</legend>
+        <div class="form-group col-10">
+          <label for="number">Номер карти: </label>
+          <input formControlName='number' id="number" placeholder="Номер карти" type="text" class="form-control" [ngClass]="{'invalid':form.get('number').invalid && form.get('number').touched}">
+          <span class="text-danger " *ngIf="form.get('number').invalid && form.get('number').touched" >
+            <span *ngIf="form.get('number').errors['required']">Поле обов'язкове для заповнення</span>&nbsp;
+            <span *ngIf="form.get('number').errors['pattern']">Невірний формат номера карти</span>
+        </span>
+        </div>
+        <div class="form-group col-10">
+          <label for="name">Власник картки </label>
+          <input formControlName='name' id="name" placeholder="Прізвище та ініціали" type="text" class="form-control" [ngClass]="{'invalid':form.get('name').invalid && form.get('name').touched}">
+          <span class="text-danger helpet-text" *ngIf="form.get('name').invalid && form.get('name').touched" >
+            <span *ngIf="form.get('name').errors['required']">Поле обов'язкове для заповнення</span>
+        </span>
+        </div>
+        <div class="form-group col-3">
+          <label for="date">Термін дії</label>
+          <input formControlName='date' id="date" placeholder="MM/YYYY" type="text" class="form-control" [ngClass]="{'invalid':form.get('date').invalid && form.get('date').touched}">
+          <span class="text-danger helpet-text" *ngIf="form.get('date').invalid && form.get('date').touched" >
+            <span *ngIf="form.get('date').errors['required']">Поле обов'язкове для заповнення</span>&nbsp;
+            <span *ngIf="form.get('date').errors['term']">Термін дії картки вийшов</span>&nbsp;
+            <span *ngIf="form.get('date').errors['pattern']">Не вірний формат</span>
+        </span>
+        </div>
+        <div class="form-group col-3">
+          <label for="cvv">CVV</label>
+          <input formControlName='cvv'  id="cvv" placeholder="cvv" type="text" class="form-control"  (click)="clickForInsert()" [ngClass]="{'invalid':form.get('cvv').invalid && form.get('cvv').touched}">
+          <span class="text-danger helpet-text" *ngIf="form.get('cvv').invalid && form.get('cvv').touched" >
+            <span *ngIf="form.get('cvv').errors['required']">Поле обов'язкове для заповнення</span>
+            <span *ngIf="form.get('cvv').errors['pattern']">Не більше 3 цифр</span>
+        </span>
+        <ng-template appRef></ng-template>
+        </div>
+
+   </fieldset>
+  </form>
+
+</div>
+
